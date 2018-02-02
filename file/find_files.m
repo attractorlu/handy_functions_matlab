@@ -23,8 +23,13 @@ if ispc % windows
     [~, cmdout] = system(command);
     files = textscan(cmdout, '%s', 'Delimiter', '\n' );
     files = files{1};
+    
     if strcmp(files{1}, 'File Not Found')
         files = cell(0);
+        
+    elseif ~subdir % if no subdirectory, concatenate path
+        filepath = fileparts(filespec);
+        files = cellfun(@(x) fullfile(filepath, x), files,  'UniformOutput', false);
     end
     
 else
