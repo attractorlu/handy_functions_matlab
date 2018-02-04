@@ -24,7 +24,9 @@ if ispc % windows
     files = textscan(cmdout, '%s', 'Delimiter', '\n' );
     files = files{1};
     
-    if strcmp(files{1}, 'File Not Found')
+    if strcmp(files{1}, 'File Not Found') ...
+        || strcmp(files{1}, 'The system cannot find the file specified.')
+    
         files = cell(0);
         
     elseif ~subdir % if no subdirectory, concatenate path
