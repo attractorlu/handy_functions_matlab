@@ -4,7 +4,8 @@ function [ im ] = im_replace_subregion( im, bg, mask)
 % INPUT: 
 %     im: image
 %     bg: background
-%     mask: binary array as same size of image 
+%     mask: binary array as same size of image, 
+%                1 mark pixels to keep, 0 to replace
 
 
 % sigma: sigma of Gaussian smooth in pixel
@@ -13,13 +14,4 @@ sigma = 10;
 [y, x] = size(im(:,:,1));
 bg = imresize(bg, [y x]);
 
-% figure; imagesc(mask)
- 
-mask = double(mask);
-mask = imgaussfilt(mask, sigma);
-
-im = double(im);
-bg = double(bg);
-for i = 1:size(im,3)
-    im(:,:,i) = (im(:,:,i)).* mask + (1-mask).*(bg(:,:,i));
-end
+im = im_mix(im, bg, mask, sigma);
