@@ -1,6 +1,8 @@
 function [ im ] = im_replace_subregion( im, bg, mask)
 % im  = im_replace_subregion( im, bg, mask)
 % replace subregion of image with background 
+% background will be scaled to the same size as image
+%
 % INPUT: 
 %     im: image
 %     bg: background
