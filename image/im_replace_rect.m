@@ -2,18 +2,22 @@ function im = im_replace_rect(im1, rect, im2, mask)
 % im_replace_rect(im1, rect, im2)
 % replace rectangular subregion of image1 
 % with masked image2, optional
+% INPUT: rect, 4-element array [x y width height]
+%
 
 
 if all(rect<=1) % if normalized unit
     row = size(im1,1);
     col = size(im2,2);
-    rect = round(rect .* [col row col row]);
+    rect = uint32(round(rect .* [col row col row]));
+else
+    rect = uint32(round(rect));
 end
 
-ind1 = rect(1);
-ind2 = rect(2);
-s1 = rect(3);
-s2 = rect(4);
+ind1 = rect(2);
+ind2 = rect(1);
+s1 = rect(4);
+s2 = rect(3);
 
 im2 = imresize(im2, [s1 s2]);
 
