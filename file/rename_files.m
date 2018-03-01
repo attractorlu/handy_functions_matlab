@@ -3,7 +3,7 @@ function rename_files(filespec, old_str, new_str)
 % Example: 
 % rename_files('*.tif', 'RoomMate_', '') % delete string in all tif files
 
-files = find_file(filespec);
+files = find_files(filespec);
 
 for i=1:length(files)
     if isempty(strfind(files{i}, old_str))
