@@ -1,4 +1,4 @@
-function [ p, tbl, stats ] = anovan_cell( data )
+function [ p, tbl, stats ] = anovan_cell( data, varargin )
 % [p, tbl, stats] = anovan_cell( data )
 % two-way analysis of variance, unbalanced design
 % input 2D cell array of vector data
@@ -22,7 +22,7 @@ for i = 1:row
     end
 end
 
-[p, tbl, stats] = anovan(y, {g1,g2}, 'display','off');
+[p, tbl, stats] = anovan(y, {g1,g2}, varargin{:});
 
 end
 
