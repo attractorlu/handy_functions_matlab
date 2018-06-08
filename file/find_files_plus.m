@@ -5,7 +5,7 @@ function files = find_files_plus(folder, specs, subdir)
 %              subdir: include subdir or not
 % OUTPUT:
 %     files: cell array of fullpath of files.
-% example:  files = find_file_plus('.', {'*.bmp', '*.jpg'})
+% example:  files = find_files_plus('.', {'*.bmp', '*.jpg'})
 
 if nargin<3
     subdir = true;
