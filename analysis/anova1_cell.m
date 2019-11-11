@@ -1,4 +1,4 @@
-function [ p ] = anova1_cell( data )
+function [p, tbl, stats] = anova1_cell( data )
 % p = anova1_cell( data )
 % one-way analysis of variance
 % input cell array of vector data
@@ -13,7 +13,7 @@ for i = 1:n
     y = [y; data1];
     g = [g; zeros(size(data1))+i];
 end
-p = anova1(y, g, 'off');
+[p, tbl, stats] = anova1(y, g, 'off');
 
 end
 
