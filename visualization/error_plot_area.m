@@ -33,19 +33,20 @@ end
 if iscell(data)
     ave = cellfun(@nanmean, data);
     sem = cellfun(@(x) std(x, 'omitnan')/sqrt( sum(~isnan(x))) , data);
+%     sem = cellfun(@(x) std(x, 'omitnan'), data);
 else
     ave = nanmean(data);
     sem = std(data,'omitnan')./sqrt( sum(~isnan(data)) );
+%     sem = std(data,'omitnan');
 end
 
 if hasx
-    error_area(x, ave, sem, varargin{ix:end})
-    hold on
-    plot(x, ave, varargin{ix:end})
+    %remove nan
+    rm = isnan(x) | isnan(ave) | isnan(sem);
+    error_area(x(~rm), ave(~rm), sem(~rm), varargin{ix:end})
 else
-    error_area(ave, sem, varargin{ix:end})
-    hold on
-    plot(ave, varargin{ix:end})
+    rm = isnan(ave) | isnan(sem);
+    error_area(ave(~rm), sem(~rm), varargin{ix:end})
 end
 
 alpha(0.5)

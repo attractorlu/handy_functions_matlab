@@ -16,7 +16,7 @@ video = zeros(1,1,1,frames) + background;
 
 %% concatenate zeros to audio signal 
 % to be same length as video
-n_samples_add = frames/frame_rate*Fs - audio_samples;
+n_samples_add = frames*Fs/frame_rate - audio_samples;
 audio = [y; zeros(n_samples_add, nch)];
 
 %% write video
