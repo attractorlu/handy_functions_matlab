@@ -1,5 +1,5 @@
 function files = find_files( filespec, subdir )
-% files = find_files( filespec ) 
+% files = find_files( filespec, subdir ) 
 % For windows only
 % INPUT: 
 %     filespec: string of path+filename, e.g. '.\*.jpg'
